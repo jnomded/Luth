@@ -11,7 +11,20 @@ import SwiftUI
 struct LuthApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                PlayView()
+                    .tabItem {
+                        Label("Play", systemImage: "gamecontroller")
+                    }
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+            }
         }
     }
 }

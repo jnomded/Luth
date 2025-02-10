@@ -4,35 +4,26 @@
 //
 //  Created by James Edmond on 2/8/25.
 //
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var sessionManager = GameSessionManager()
+    
     var body: some View {
         TabView {
-            HomeFeedView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
-                }
+            HomeView()
+                .tabItem { Label("Home", systemImage: "house") }
             
-            RecordWorkoutView()
-                .tabItem {
-                    Image(systemName: "plus.circle")
-                    Text("Record")
-                }
+            PlayView()
+                .tabItem { Label("Play", systemImage: "gamecontroller") }
             
             SettingsView()
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
-                }
+                .tabItem { Label("Settings", systemImage: "gear") }
         }
+        .environmentObject(sessionManager)
     }
 }
 
-
 #Preview {
-    HomeFeedView()
-        .preferredColorScheme(.dark)
+    ContentView()
 }
